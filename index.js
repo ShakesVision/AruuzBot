@@ -1,8 +1,9 @@
-// const Telegraph = require("telegraf");
+
 const { Composer } = require('micro-bot');
 const axios = require("axios");
-
+// const Telegraph = require("telegraf");
 // const bot = new Telegraph("");
+
 const bot = new Composer;
 
 let uri = "http://aruuz.com/api/default/getTaqti?text=";
@@ -11,15 +12,11 @@ let data;
 let msg = "";
 
 bot.start(ctx => {
-    ctx.reply("Send in a she'r to find its Bahr & Wazn.");
+    ctx.reply("Bot started! Send in a she'r to find its Bahr & Wazn.");
 });
 
 bot.help(ctx => {
     ctx.reply("AruuzBot has following commands: \n /start \n /help");
-});
-
-bot.start(ctx => {
-    ctx.reply("Bot started! Send in a she'r to find its Bahr & Wazn.");
 });
 
 bot.command('about', ctx => {
@@ -77,12 +74,12 @@ bot.on("text", ctx => {
 
 });
 
-bot.on("inline_query", async(ctx) => {
+bot.on("inline_query", async (ctx) => {
     input = ctx.inlineQuery.query;
     let url = uri + input;
     url = encodeURI(url);
-    if(input.length>0) {
-        
+    if (input.length > 0) {
+
     }
     axios.get(url).then(res => {
         data = res.data;
@@ -92,7 +89,7 @@ bot.on("inline_query", async(ctx) => {
         let result = data.map((e, i) => {
             let msg = "";
             for (let i = 0; i < e.words.length; i++) {
-                msg += `${e.words[i]} ${e.codes[i]}  |  `;                
+                msg += `${e.words[i]} ${e.codes[i]}  |  `;
             }
             return {
                 type: 'article',
@@ -101,18 +98,17 @@ bot.on("inline_query", async(ctx) => {
                 title: `${e.feet}`,
                 description: `${e.meterName}...تفصیل دیکھیں`,
                 input_message_content: {
-                    message_text: `${e.originalLine}\n${e.feet}\n${e.meterName}\n\nتقطیع: \n${msg}` 
+                    message_text: `${e.originalLine}\n${e.feet}\n${e.meterName}\n\nتقطیع: \n${msg}`
                 }
             }
         });
         ctx.answerInlineQuery(result);
-    });    
+    });
 
 }).catch((err) => {
     console.log(err);
     //ctx.answerInlineQuery("تیکنیکی خرابی! دوبارہ کوشش کریں۔");
 });
-
 
 // bot.launch();
 module.exports = bot;
