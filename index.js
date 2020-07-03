@@ -1,7 +1,9 @@
-const Telegraph = require("telegraf");
+// const Telegraph = require("telegraf");
+const { Composer } = require('micro-bot');
 const axios = require("axios");
 
-const bot = new Telegraph("1132680528:AAHMSsZBsxO4TwoaqKaas-BZ2fua2zJ5Wv4");
+// const bot = new Telegraph("");
+const bot = new Composer;
 
 let uri = "http://aruuz.com/api/default/getTaqti?text=";
 let input = "";
@@ -112,4 +114,5 @@ bot.on("inline_query", async(ctx) => {
 });;
 
 
-bot.launch();
+// bot.launch();
+module.exports = bot;
