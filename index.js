@@ -75,7 +75,7 @@ bot.on("text", ctx => {
         ctx.reply("تیکنیکی خرابی! دوبارہ کوشش کریں۔");
     });
 
-})
+});
 
 bot.on("inline_query", async(ctx) => {
     input = ctx.inlineQuery.query;
@@ -111,7 +111,7 @@ bot.on("inline_query", async(ctx) => {
 }).catch((err) => {
     console.log(err);
     //ctx.answerInlineQuery("تیکنیکی خرابی! دوبارہ کوشش کریں۔");
-});;
+});
 
 
 // bot.launch();
