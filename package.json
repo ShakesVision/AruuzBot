@@ -1,0 +1,16 @@
+{
+  "name": "AruuzBot",
+  "version": "1.0.0",
+  "description": "A telegram bot to calculate metres for Urdu Poetry.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Shakeeb Ahmad",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "telegraf": "^3.38.0"
+  }
+}
