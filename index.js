@@ -1,10 +1,9 @@
-
 const { Composer } = require('micro-bot')
 const axios = require("axios")
 // const Telegraph = require("telegraf");
 // const bot = new Telegraph("");
 
-const bot = new Composer
+const bot = new Composer();
 
 let uri = "http://aruuz.com/api/default/getTaqti?text=";
 let input = "";
@@ -16,7 +15,7 @@ bot.start(ctx => {
 });
 
 bot.help(ctx => {
-    ctx.reply("AruuzBot has following commands: \n /start \n /help");
+    ctx.reply("AruuzBot has following commands: \n /start \n /about");
 });
 
 bot.command('about', ctx => {
@@ -111,4 +110,9 @@ bot.on("inline_query", async (ctx) => {
 });
 
 // bot.launch();
-module.exports = bot
+module.exports = bot;
+/* module.exports = {
+    BOT_TOKEN: process.env.BOT_TOKEN,
+    BOT_DOMAIN: process.env.BOT_DOMAIN,
+    bot
+}; */
